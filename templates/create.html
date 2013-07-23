@@ -1,0 +1,84 @@
+<head>
+    <title>WeSignUp|Create</title>
+    <!-- Include the bootstrap stylesheets -->
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <style>
+        h3 {color:#0053cc;}        
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">      
+      <div class="navbar-inner pull-center">
+        <div class="container">          
+          <a class="brand" href="/signup">GP Sign Up!</a>
+              <ul class="nav">              
+              <li class="active"><a>Create</a></li>
+              <li><a href="/signup/signup">Sign up</a></li>
+              <li><a href="/signup/manage">Manage</a></li>
+              <li><a href="http://fast-refuge-5620.herokuapp.com/signup/">Mobile view</a></li>
+            </ul>
+          </div>
+      </div>    
+    </div>    
+    <br/><br/>
+	<table width="500" align="center">
+	<tr><td>
+	<form action="" method="post"  class="form-horizontal">
+		<fieldset>
+		{% csrf_token %}
+		<legend align="center"><h3>Create an event</h3></legend>
+		<div class="control-group">
+            <label class="control-label">Event name</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" name="event_name">          
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Location</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" name="location">
+            </div>
+        </div>
+		<div class="control-group">
+            <label class="control-label">Start day</label>
+            <div class="controls">
+              <input type="date" class="input-xlarge" name="event_start_day">
+            </div>
+        </div>
+		<div class="control-group">
+            <label class="control-label">End day</label>
+            <div class="controls">
+              <input type="date" class="input-xlarge" name="event_end_day">
+            </div>
+        </div>
+		<div class="control-group">
+            <label class="control-label">Start time</label>
+            <div class="controls">
+              <input type="time" class="input-xlarge" name="event_start_time">
+            </div>
+        </div>
+		<div class="control-group">
+            <label class="control-label">End time</label>
+            <div class="controls">
+              <input type="time" class="input-xlarge" name="event_end_time">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Slot duration</label>
+            <div class="controls">
+              <input type="number" class="input" name="slot_duration">
+            </div>
+        </div>
+		<div class="control-group">
+            <label class="control-label">Slot capacity</label>
+            <div class="controls">
+              <input type="number" class="input" name="slot_capacity">
+            </div>
+        </div>
+        <div class="form-actions">            
+            <button type="submit" class="btn btn-primary" value="submit">Create</button>
+        </div>	
+        </fieldset>	
+	</form>
+	</td></tr>
+</body>

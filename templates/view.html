@@ -1,0 +1,68 @@
+<head>
+    <title>WeSignUp|{{event.event_name}}</title>
+    <!-- Include the bootstrap stylesheets -->
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <style>
+    	h3 {color:#0053cc;}    	
+    </style>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">	  
+      <div class="navbar-inner pull-center">
+        <div class="container">
+          <a class="brand" href="#">We Sign Up!</a>          
+            <ul class="nav">
+              <li><a href="/signup">Home</a></li>
+              <li><a href="/signup/create">Create</a></li>
+              <li><a href="/signup/signup">Sign up</a></li>
+              <li><a href="/signup/manage">Manage</a></li>
+            </ul>          
+        </div>
+      </div>  	
+    </div>
+    <br/><br/>
+    <div class="container">
+    <form action="" method="post">
+    <fieldset>
+	{% csrf_token %}
+	<table align="center">		
+		<tr><td>	
+			<legend align="center"><h3 color:>{{ event.event_name}}</h3></legend>
+			<input type="hidden" name="event_id" value="{{event.id}}">
+			<table border="0">				
+				<tr><th align="right">Location:</th><td>{{ event.location}}</td></tr>				
+				<tr><th align="right">Name:</th><td><input type="text" name="person_name"></td></tr>				
+				<tr><th align="right">Email:</th><td><input type="email" name="email"></td></tr>
+			</table>
+		</td><tr>
+		<tr><td><br/></td><tr>
+		<tr><td>
+				<table class="table table-striped">
+					<tr>
+						<th>Date</th>
+						<th>Start time</th>
+						<th>End time</th>		
+						<th>I will be there</th>
+					</tr>
+					{% for slot in slot_list %}
+					<tr>
+						<td>{{ slot.slot_day }}</td>
+						<td>{{ slot.slot_start_time }}</td>
+						<td>{{ slot.slot_end_time }}</td>		
+						<td>
+							{% if not slot.is_full %}
+								<input type="checkbox" name="signed_up_slots" id={{slot.id}} value="{{slot.id}}">
+							{% endif %}
+						</td>
+					</tr>
+					{% endfor %}
+				</table>
+				<div class="form-actions" align="center">            
+            	<button type="submit" class="btn btn-primary" value="submit">Sign-up</button>
+        		</div>				
+		</td></tr>
+	</table>
+	</fieldset>
+	</form>
+	</div>
+</body>

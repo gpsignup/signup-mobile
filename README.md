@@ -1,2 +1,2 @@
-signup-mobile
+GP Sign Up - mobile edition
 =============

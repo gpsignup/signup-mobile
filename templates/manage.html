@@ -1,0 +1,64 @@
+<head>
+    <title>WeSignUp|Manage</title>
+    <!-- Include the bootstrap stylesheets -->
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <style>
+    	h3 {color:#0053cc;}
+    	td {vertical-align:middle}    	
+    </style>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-fixed-top">	  
+      <div class="navbar-inner pull-center">
+        <div class="container">          
+            <a class="brand" href="/signup">GP Sign Up!</a>
+            <ul class="nav">              
+              <li><a href="/signup/create">Create</a></li>
+              <li><a href="/signup/signup">Sign up</a></li>
+              <li class="active"><a>Manage</a></li>
+              <li><a href="http://fast-refuge-5620.herokuapp.com/signup/">Mobile view</a></li>
+            </ul>          
+        </div>
+      </div>  	
+    </div>
+    <br/><br/>
+    <div class="container">    	
+		<table align="center">
+			<tr><td>
+				<legend align="center"><h3 color:>Manage Events</h3></legend>
+			</td></tr>
+			<tr><td>
+				<table class="table table-striped">
+					<tr>
+						<th>Event</th>
+						<th>Location</th>
+						<th>Start date</th>
+						<th>End date</th>
+						<th>Start time</th>
+						<th>End time</th>
+						<th></th>
+					</tr>
+					{% for event in event_list %}
+					<tr>
+						<td>{{ event.event_name }}</td>
+						<td>{{ event.location }}</td>
+						<td>{{ event.event_start_day }}</td>
+						<td>{{ event.event_end_day }}</td>
+						<td>{{ event.event_start_time }}</td>
+						<td>{{ event.event_end_time }}</td>
+						<td>
+							<form action="" method="post"><fieldset>
+								{% csrf_token %}
+								<input type="hidden" name="event_id" value="{{event.id}}">
+								<input type="hidden" name="is_mobile" value="False">
+								<button class="btn btn-primary btn-mini" type="submit" value="submit">view</button>
+							</form>
+						</td>
+					</tr>
+					{% endfor %}
+				</table>
+			</td></tr>
+		</table>
+	</div>
+</body>
+
